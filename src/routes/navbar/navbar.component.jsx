@@ -1,5 +1,5 @@
 import Logo from '../../assets/crown.svg';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -7,19 +7,25 @@ const NavBar = () => {
             <div className="navbar py-3">
                 <div className="container">
                     <div className='ms-logo'>
-                        <a className="navbar-brand" href="#">
+                        <Link className="navbar-brand" to='/'>
                             <img width={30} height={24} src={Logo} alt="crw-clothing logo" />
-                        </a>
+                        </Link>
                     </div>
                     <ul className='ms-links list-unstyled d-flex gap-3 m-0'>
                         <li>
-                            <a href='#'>Shop</a>
+                            <Link className='nav-link' to='shop'>
+                                SHOP
+                            </Link>
                         </li>
                         <li>
-                            <a href='#'>Sing Up</a>
+                            <Link className='nav-link' to='signup'>
+                                SIGN UP
+                            </Link>
                         </li>
                         <li>
-                            <a href='#'>Contacts</a>
+                            <Link className='nav-link' to='contacts'>
+                                CONTACTS
+                            </Link>
                         </li>
                     </ul>
                 </div>
