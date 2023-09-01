@@ -19,8 +19,8 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className='nav-link' to='signup'>
-                                SIGN UP
+                            <NavLink className='nav-link' to='signin'>
+                                SIGN IN
                             </NavLink>
                         </li>
                         <li>

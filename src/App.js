@@ -5,7 +5,7 @@ import Home from './routes/home/home.component';
 import NavBar from './routes/navbar/navbar.component';
 import Shop from './routes/shop/shop.component';
 import Contacts from './routes/contacts/contacts.component';
-import SignUp from './routes/sign-up/sign-up.component';
+import SignIn from './routes/signIn/signIn.component';
 
 const App = ()=> {
 
@@ -14,7 +14,7 @@ const App = ()=> {
       <Route path='/' element={<NavBar/>}>
         <Route index element={<Home/>}/>
         <Route path='shop' element={<Shop/>}/>
-        <Route path='signup' element={<SignUp/>}/>
+        <Route path='signin' element={<SignIn/>}/>
         <Route path='contacts' element={<Contacts/>}/>
       </Route>
     </Routes>
