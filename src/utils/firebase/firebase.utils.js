@@ -41,7 +41,26 @@ export const createUserDocumentFromAuth = async (userAuth)=>{
     }else return userDocRef;
 }
 
-export const createAuthUserWithEmailAndPassword = async (email, password)=>{
+export const createAuthUserWithEmailAndPassword = async (email, password, displayName)=>{
     if(!email || !password) return;
-    return await createUserWithEmailAndPassword(auth, email, password);
+    try {
+        const response = await createUserWithEmailAndPassword(auth, email, password);
+        const userDocRef = doc(db, 'users', response.user.uid);
+        const userSnapshot = await getDoc(userDocRef);
+        if(!userSnapshot.exists()){
+            const createdAt = new Date();
+            try {
+                await setDoc(userDocRef,{
+                    displayName,
+                    email,
+                    createdAt
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        }else return userDocRef;
+    } catch (error) {
+        console.log(error);
+    }
+
 }
