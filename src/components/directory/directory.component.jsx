@@ -1,4 +1,4 @@
-import Category from "../../category/category.component";
+import Category from "../category/category.component";
 
 
 const Directory = ({categories})=> {
