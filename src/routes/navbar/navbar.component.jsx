@@ -1,5 +1,6 @@
 import Logo from '../../assets/crown.svg';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, NavLink } from 'react-router-dom';
+import './navbar.style.scss';
 
 const NavBar = () => {
     return (
@@ -13,19 +14,19 @@ const NavBar = () => {
                     </div>
                     <ul className='ms-links list-unstyled d-flex gap-3 m-0'>
                         <li>
-                            <Link className='nav-link' to='shop'>
+                            <NavLink className='nav-link' to='shop'>
                                 SHOP
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link className='nav-link' to='signup'>
+                            <NavLink className='nav-link' to='signup'>
                                 SIGN UP
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link className='nav-link' to='contacts'>
+                            <NavLink className='nav-link' to='contacts'>
                                 CONTACTS
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
