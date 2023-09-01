@@ -60,6 +60,9 @@ export const createAuthUserWithEmailAndPassword = async (email, password, displa
             }
         }else return userDocRef;
     } catch (error) {
+        if(error.code === 'auth/email-already-in-use'){
+            return alert('cannot register with these credentials, email already in use');
+        }
         console.log(error);
     }
 
