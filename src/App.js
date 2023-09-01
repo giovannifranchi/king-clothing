@@ -1,6 +1,7 @@
 
 import './App.scss';
 import Directory from './components/directory/directory.component';
+import NavBar from './components/navbar/navbar.component';
 
 const App = ()=> {
     const categories = [
@@ -32,6 +33,7 @@ const App = ()=> {
   ];
   return (
     <div className='app'>
+      <NavBar/>
       <Directory categories={categories}/>
     </div>
   )
