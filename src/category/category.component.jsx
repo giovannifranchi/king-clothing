@@ -6,9 +6,10 @@ const Category = ({category})=> {
     const additionalClasses = id < 4 ? "col-md-4" : "col-md-6";
     return (
         <div className={`${basicClasses} ${additionalClasses} background-container`}>
-            <div className='px-3 h-100 background d-flex align-items-center justify-content-center' style={{backgroundImage: `url(${imageUrl})`}}>
-                <div className='category-body px-3'>
-                    <h3>{title}</h3>
+            <div className='p-3 h-100 background d-flex align-items-center justify-content-center flex-column' style={{backgroundImage: `url(${imageUrl})`}}>
+                <div className='category-body p-3'>
+                    <h3 className='text-center'>{title}</h3>
+                    <h4 className='text-center'>SHOP NOW</h4>
                 </div>
             </div>
         </div>
