@@ -31,8 +31,8 @@ const SignInForm = ()=> {
 
     return (
         <div>
-            <h2>I already have an account</h2>
-            <span>Sing In with your email and password</span>
+            <h2 className="mb-3">I already have an account</h2>
+            <span className="mb-3">Sing In with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput label='email' name="email" id="email2" type="email" value={email} onChange={handleChange} />
                 <FormInput label='password' name="password" id="password2" type="password" value={password} onChange={handleChange} />

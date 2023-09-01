@@ -10,12 +10,12 @@ const SignIn = () => {
     }
 
     return (
-        <div className='container'>
-            <div className='row justify-content-center gap-3'>
-                <div className='col-sm-6 col-md-5'>
+        <div className='container pt-5'>
+            <div className='row justify-content-center gap-5'>
+                <div className='col-sm-12 col-md-5'>
                     <SignInForm />
                 </div>
-                <div className='col-sm-6 col-md-5'>
+                <div className='col-sm-12 col-md-5'>
                     <SignUpForm />
                 </div>
             </div>
