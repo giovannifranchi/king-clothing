@@ -1,0 +1,17 @@
+.background-container {
+    height: 300px;
+    overflow: hidden;
+    .background{
+        transition: transform .5 ease-in-out;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &:hover{
+            transform: scale(1.5);
+        }
+        .category-body {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+    }
+}
