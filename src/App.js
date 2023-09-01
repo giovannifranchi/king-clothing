@@ -1,15 +1,17 @@
 
 import './App.scss';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Home from './routes/home.component';
 import NavBar from './components/navbar/navbar.component';
 
 const App = ()=> {
 
   return (
-    <div className='app'>
-      <NavBar/>
-      <Home/>
-    </div>
+    <Routes>
+      <Route path='/' element={<NavBar/>}>
+        <Route index element={<Home/>}/>
+      </Route>
+    </Routes>
   )
 }
 
