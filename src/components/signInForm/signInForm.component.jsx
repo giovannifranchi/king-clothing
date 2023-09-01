@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signInWithGooglePopup, createUserDocumentFromAuth,  } from '../../utils/firebase/firebase.utils';
+import { signInWithCredentials } from "../../utils/firebase/firebase.utils";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 
@@ -24,8 +25,15 @@ const SignInForm = ()=> {
         const userDocRef = await createUserDocumentFromAuth(user);
     }
 
-    const handleSubmit = (event)=>{
+    const handleSubmit = async (event)=>{
         event.preventDefault();
+        if(!email.trim() || !password) return alert('you need to insert your credentials');
+        try {
+            const response = await signInWithCredentials(email, password);
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
     }
     
 
