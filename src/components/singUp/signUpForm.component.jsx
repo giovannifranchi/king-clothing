@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../formInput/formInput.component";
+import Button from "../button/button.component";
 
 const defaultFormFields = {
     displayName: '',
@@ -29,24 +30,24 @@ const SignUpForm = () => {
 
 
     return (
-        <div className="row">
-            <div className="col-sm-12 col-md-4">
-                <h2 className="mb-3">Don't have an account?</h2>
-                <span className="mb-3">SIGN UP WITH YOUR EMAIL AND PASSWORD</span>
-                <form onSubmit={handleSubmit}>
+        <div >
+
+            <h2 className="mb-3">Don't have an account?</h2>
+            <span className="mb-3">SIGN UP WITH YOUR EMAIL AND PASSWORD</span>
+            <form onSubmit={handleSubmit}>
 
 
-                    <FormInput label='Name' type="text" id="name" name="displayName" onChange={handleChange} value={displayName} required />
+                <FormInput label='Name' type="text" id="name" name="displayName" onChange={handleChange} value={displayName} required />
 
-                    <FormInput label='Email' type="email" id="email" name="email" onChange={handleChange} value={email} required />
+                <FormInput label='Email' type="email" id="email" name="email" onChange={handleChange} value={email} required />
 
-                    <FormInput label='Password' type="password" id="password" name="password" onChange={handleChange} value={password} required />
+                <FormInput label='Password' type="password" id="password" name="password" onChange={handleChange} value={password} required />
 
-                    <FormInput label='Confirm Password' type="password" id="confirm" name="confirmPassword" onChange={handleChange} value={confirmPassword} required />
+                <FormInput label='Confirm Password' type="password" id="confirm" name="confirmPassword" onChange={handleChange} value={confirmPassword} required />
 
-                    <button type="submit">SIGN UP</button>
-                </form>
-            </div>
+                <Button type='submit' text='Sign Up' />
+            </form>
+
         </div>
     )
 }

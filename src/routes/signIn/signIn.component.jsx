@@ -1,6 +1,6 @@
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInWithGoogleRedirect, auth } from '../../utils/firebase/firebase.utils';
+import { signInWithGooglePopup, createUserDocumentFromAuth, } from '../../utils/firebase/firebase.utils';
 import SignUpForm from '../../components/singUp/signUpForm.component';
-
+import SignInForm from '../../components/signInForm/signInForm.component';
 
 const SignIn = () => {
 
@@ -11,13 +11,14 @@ const SignIn = () => {
 
     return (
         <div className='container'>
-            <h1>
-                this is the signup page
-            </h1>
-            <button onClick={logGoogleUser}>
-                Sign in with google pop up
-            </button>
-            <SignUpForm />
+            <div className='row justify-content-center gap-3'>
+                <div className='col-sm-6 col-md-5'>
+                    <SignInForm />
+                </div>
+                <div className='col-sm-6 col-md-5'>
+                    <SignUpForm />
+                </div>
+            </div>
         </div>
     )
 }
