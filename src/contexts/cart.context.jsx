@@ -38,7 +38,8 @@ export const CartProvider = ({children})=> {
     const removeItemsFromCart = (item)=>{
         if(cartItems[item.id].itemAmount === 1){
             const key = item.id;
-            const newItems = delete cartItems[key];
+            const newItems = {...cartItems}
+            delete newItems[key];
             setCartItems({...newItems})
         }else{
             setCartItems((prevItems)=>({
