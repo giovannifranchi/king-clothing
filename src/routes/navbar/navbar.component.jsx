@@ -17,7 +17,7 @@ const NavBar = () => {
                 <div className="container">
                     <div className='ms-logo'>
                         <Link className="navbar-brand" to='/'>
-                            <img width={30} height={24} src={Logo} alt="crw-clothing logo" />
+                            <img width={50} height={35} src={Logo} alt="crw-clothing logo" />
                         </Link>
                     </div>
                     <ul className='ms-links list-unstyled d-flex gap-3 m-0'>
