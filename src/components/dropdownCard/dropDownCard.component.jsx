@@ -34,8 +34,8 @@ const DropdownCard = ({item})=> {
                 <div className='d-flex justify-content-between pe-3'>
                     <span>{`${itemAmount} x ${price}$`}</span>
                     <span className='d-flex '>
-                        <button onClick={addItems}>+</button>
-                        <button onClick={removeItems}>-</button>
+                        <button className='cart-card-button' onClick={removeItems}>-</button>
+                        <button className='cart-card-button' onClick={addItems}>+</button>
                     </span>
                 </div>
                 <span>{`Total: ${itemAmount * price}$`}</span>
