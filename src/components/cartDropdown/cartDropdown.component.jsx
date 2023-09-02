@@ -8,19 +8,19 @@ import { useContext } from 'react';
 
 const CartDropdown = () => {
 
-    const {isOpen, cartItems} = useContext(CartContext);
+    const {isOpen, cartItems, totalAmount} = useContext(CartContext);
 
     return (
         <div className={`${isOpen ? 'cart-dropdown-container' : 'd-none'}`}>
 
-            {/* {
-                cartItems.length ? 
+            {
+                totalAmount ? 
                 (<div className='cart-items'></div>)
                 :
                 (<div className='empty-message'>No items in cart</div>)
-            } */}
+            }
 
-            <Button/>
+            <Button text='Go to Checkout' buttonType='inverted'/>
         </div>
 
     )
