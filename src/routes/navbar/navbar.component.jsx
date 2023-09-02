@@ -1,8 +1,16 @@
 import Logo from '../../assets/crown.svg';
 import { Outlet, Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/users.context';
+import { signOutAuth } from '../../utils/firebase/firebase.utils';
 import './navbar.style.scss';
 
 const NavBar = () => {
+
+    const { currentUser } = useContext(UserContext);
+
+    const handleSignOut = ()=> signOutAuth();
+
     return (
         <>
             <div className="navbar py-3">
@@ -19,19 +27,28 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink className='nav-link' to='signin'>
-                                SIGN IN
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink className='nav-link' to='contacts'>
                                 CONTACTS
                             </NavLink>
                         </li>
+                        <li>
+                            {
+                                !currentUser ?
+                                    (
+                                        <NavLink className='nav-link' to='signin'>
+                                            SIGN IN
+                                        </NavLink>
+                                    )
+                                    :
+                                    (
+                                        <span onClick={handleSignOut} className='nav-link cursor-pointer'>SIGN OUT</span>
+                                    )
+                            }
+                        </li>
                     </ul>
                 </div>
             </div>
-            <Outlet/>
+            <Outlet />
         </>
     )
 }
