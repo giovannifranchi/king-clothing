@@ -5,27 +5,9 @@ import { CartContext } from '../../contexts/cart.context';
 
 const ProductCard = ({product})=> {
 
-    const { setCartItems, setTotalAmount, totalAmount, cartItems } = useContext(CartContext);
+    const { addItemstoCart } = useContext(CartContext);
 
     const { id, name, imageUrl, price } = product;
-
-    const addItemstoCart = (item) => {
-        if (!(item.id in cartItems)) {
-            setCartItems((prevCartItems) => ({
-                ...prevCartItems,
-                [item.id]: { info: item, itemAmount: 1 },
-            }));
-        } else {
-            setCartItems((prevCartItems) => ({
-                ...prevCartItems,
-                [item.id]: {
-                    info: item,
-                    itemAmount: prevCartItems[item.id].itemAmount + 1,
-                },
-            }));
-        }
-        setTotalAmount(totalAmount + 1);
-    };
 
 
     const addProduct = ()=> {

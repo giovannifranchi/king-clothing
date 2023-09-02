@@ -1,16 +1,23 @@
 
 import './dropdownCard.style.scss';
 
+import { CartContext } from '../../contexts/cart.context';
+import { useContext } from 'react';
+
 const DropdownCard = ({item})=> {
+
+
+    const { addItemstoCart } = useContext(CartContext);
 
     const {info, itemAmount } = item;
 
     const { name, imageUrl, price } = info;
 
-    const tryPreventBubble = (event)=>{
+    const addItems = (event)=>{
         event.stopPropagation();
-        return console.log('pressed');
+        addItemstoCart(info);
     }
+
 
     return (
         <div className='row mb-3'>
@@ -22,8 +29,8 @@ const DropdownCard = ({item})=> {
                 <div className='d-flex justify-content-between pe-3'>
                     <span>{`${itemAmount} x ${price}$`}</span>
                     <span className='d-flex '>
-                        <button onClick={tryPreventBubble}>+</button>
-                        <button onClick={tryPreventBubble}>-</button>
+                        <button onClick={addItems}>+</button>
+                        <button onClick={()=>{}}>-</button>
                     </span>
                 </div>
                 <span>{`Total: ${itemAmount * price}$`}</span>
