@@ -7,7 +7,7 @@ import { useContext } from 'react';
 const DropdownCard = ({item})=> {
 
 
-    const { addItemstoCart } = useContext(CartContext);
+    const { addItemstoCart, removeItemsFromCart } = useContext(CartContext);
 
     const {info, itemAmount } = item;
 
@@ -17,6 +17,11 @@ const DropdownCard = ({item})=> {
         event.stopPropagation();
         addItemstoCart(info);
     }
+
+    const removeItems = (event)=>{
+        event.stopPropagation();
+        removeItemsFromCart(info);
+    } 
 
 
     return (
@@ -30,7 +35,7 @@ const DropdownCard = ({item})=> {
                     <span>{`${itemAmount} x ${price}$`}</span>
                     <span className='d-flex '>
                         <button onClick={addItems}>+</button>
-                        <button onClick={()=>{}}>-</button>
+                        <button onClick={removeItems}>-</button>
                     </span>
                 </div>
                 <span>{`Total: ${itemAmount * price}$`}</span>

@@ -34,9 +34,27 @@ export const CartProvider = ({children})=> {
         }
         setTotalAmount(totalAmount + 1);
     };
+
+    const removeItemsFromCart = (item)=>{
+        if(cartItems[item.id].itemAmount === 1){
+            const key = item.id;
+            const newItems = delete cartItems[key];
+            setCartItems({...newItems})
+        }else{
+            setCartItems((prevItems)=>({
+                ...prevItems,
+                [item.id]:{
+                    info: item,
+                    itemAmount: prevItems[item.id].itemAmount - 1
+                }
+            }))
+        }
+
+        setTotalAmount(totalAmount - 1);
+    }
     
 
-    const value = {isOpen, setIsOpen, cartItems, setCartItems, totalAmount, setTotalAmount, addItemstoCart};
+    const value = {isOpen, setIsOpen, cartItems, setCartItems, totalAmount, setTotalAmount, addItemstoCart, removeItemsFromCart};
 
     return (
         <CartContext.Provider value={value}>
