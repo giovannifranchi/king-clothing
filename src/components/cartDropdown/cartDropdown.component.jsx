@@ -13,16 +13,14 @@ const CartDropdown = () => {
     return (
         <div className={`${isOpen ? 'cart-dropdown-container' : 'd-none'}`}>
 
-            {
+            {/* {
                 cartItems.length ? 
                 (<div className='cart-items'></div>)
                 :
                 (<div className='empty-message'>No items in cart</div>)
-            }
+            } */}
 
-            {
-                cartItems.length ? (<Button text='Go to Checkout' buttonType='inverted' />) : (<></>)
-            }
+            <Button/>
         </div>
 
     )
