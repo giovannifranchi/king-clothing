@@ -27,7 +27,7 @@ const CartDropdown = () => {
                 totalAmount ? 
                 (<div className='cart-items'>
                     {
-                        cart.map((item)=>{return <DropdownCard item={item}/>})
+                        cart.map((item)=>{return <DropdownCard item={item} key={item.id}/>})
                     }
                 </div>)
                 :
