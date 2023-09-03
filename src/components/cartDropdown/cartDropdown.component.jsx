@@ -4,12 +4,14 @@ import DropdownCard from '../dropdownCard/dropDownCard.component';
 import Button from '../button/button.component';
 import { CartContext } from '../../contexts/cart.context';
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 
 const CartDropdown = () => {
 
     const {isOpen, cartItems, totalAmount} = useContext(CartContext);
+
 
     const cartItemsArray = ()=>{
         if(!Object.keys(cartItems).length) return [];
@@ -34,7 +36,9 @@ const CartDropdown = () => {
                 (<div className='empty-message'>No items in cart</div>)
             }
 
-            <Button text='Go to Checkout' buttonType='inverted'/>
+            <NavLink to='checkout' className='w-100'>
+                <Button text='Go to Checkout' buttonType='inverted'/>
+            </NavLink>
         </div>
 
     )
