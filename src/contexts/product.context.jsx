@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useState } from "react";
-import PRODUCTS from '../utils/shop-data.json';
+import SHOP_DATA from "../utils/shop-data";
 
 
 export const ProductContext = createContext({
@@ -10,7 +10,7 @@ export const ProductContext = createContext({
 
 export const ProductProvider = ({children})=>{
 
-    const [products, setProducts] = useState(PRODUCTS);
+    const [products, setProducts] = useState(SHOP_DATA);
 
     const value = {products, setProducts}
 
