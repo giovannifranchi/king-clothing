@@ -55,9 +55,11 @@ export const CartProvider = ({children})=> {
     }
 
     const removeAllItems = ({id})=>{
+        const amountToRemove = cartItems[id].itemAmount;
         const newItems = {...cartItems}
         delete newItems[id];
         setCartItems(newItems);
+        setTotalAmount(totalAmount - amountToRemove);
     }
     
 
