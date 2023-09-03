@@ -7,18 +7,18 @@ const CartTable = () => {
 
     const { cartItems, addItemstoCart, removeItemsFromCart, removeAllItems } = useContext(CartContext);
 
-    const getArrayAndTotalPrice = (() => {
-        const list = [];
-        let totalAmount = 0;
-        Object.keys(cartItems).forEach((item) => {
-            list.push(cartItems[item])
-            totalAmount = totalAmount + cartItems[item].itemAmount * cartItems[item].info.price;
-        })
-        setItemsArray(list);
-        setTotalPrice(totalAmount);
-    })
 
     useEffect(() => {
+        const getArrayAndTotalPrice = (() => {
+            const list = [];
+            let totalAmount = 0;
+            Object.keys(cartItems).forEach((item) => {
+                list.push(cartItems[item])
+                totalAmount = totalAmount + cartItems[item].itemAmount * cartItems[item].info.price;
+            })
+            setItemsArray(list);
+            setTotalPrice(totalAmount);
+        })
         getArrayAndTotalPrice();
     }, [cartItems]);
 
@@ -28,7 +28,7 @@ const CartTable = () => {
 
 
     return (
-        <>
+        <div className='mt-5 pt-5'>
             {
                 itemsArray.length > 0 && (
                     <>
@@ -51,23 +51,23 @@ const CartTable = () => {
                                     </td>
                                     <td className='align-middle'>{info.name}</td>
                                     <td className='align-middle'>
-                                        <button className='cart-card-button' onClick={() => { removeItemsFromCart(info) }}> <i class="fa-solid fa-chevron-left"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { removeItemsFromCart(info) }}> <i className="fa-solid fa-chevron-left"></i> </button>
                                         <span>{itemAmount}</span>
-                                        <button className='cart-card-button' onClick={() => { addItemstoCart(info) }}> <i class="fa-solid fa-chevron-right"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { addItemstoCart(info) }}> <i className="fa-solid fa-chevron-right"></i> </button>
                                     </td>
                                     <td className='align-middle'>{info.price}</td>
                                     <td className='align-middle'>
-                                        <button onClick={() => { removeAllItems(info) }} className='cart-card-button'><i class="fa-solid fa-xmark"></i></button>
+                                        <button onClick={() => { removeAllItems(info) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                    </>
+                </>
                 )
             }
             {totalPrice ? <h2 className='text-end'>Price: {totalPrice}$</h2> : <h2 className='text-center mt-5'>No Items in the cart</h2>}
-        </>
+        </div>
     )
 }
 
