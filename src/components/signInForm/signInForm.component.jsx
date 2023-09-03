@@ -22,15 +22,14 @@ const SignInForm = ()=> {
 
     const logGoogleUser = async () => {
         const { user } = await signInWithGooglePopup();
-        const userDocRef = await createUserDocumentFromAuth(user);
+        await createUserDocumentFromAuth(user);
     }
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
         if(!email.trim() || !password) return alert('you need to insert your credentials');
         try {
-            const response = await signInWithCredentials(email, password);
-            console.log(response);
+            await signInWithCredentials(email, password);
         } catch (error) {
             console.log(error);
         }

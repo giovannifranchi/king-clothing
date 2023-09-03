@@ -7,7 +7,7 @@ const ProductCard = ({product})=> {
 
     const { addItemstoCart} = useContext(CartContext);
 
-    const { id, name, imageUrl, price } = product;
+    const {  name, imageUrl, price } = product;
 
 
     const addProduct = ()=> {
