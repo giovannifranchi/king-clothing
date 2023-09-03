@@ -15,7 +15,7 @@ const CategoryDetail = ()=> {
     return(
         <div className='container'>
             <h2 className='my-3 text-center'>{category.toUpperCase()}</h2>
-            <div className='row gy-5'>
+            <div className='row gy-5 py-5'>
             {
                     categories[category].map((item)=>(
                         <div className='col-sm-6 col-md-3' key={item.id}>

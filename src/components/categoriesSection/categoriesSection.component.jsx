@@ -12,7 +12,7 @@ const CategoriesSection = () => {
     const { categories } = useContext(CategoriesContext);
 
     return (
-        <div className='container'>
+        <div className='container py-5'>
             {
                 Object.keys(categories).map((category)=>{
                     return (

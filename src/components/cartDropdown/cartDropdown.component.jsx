@@ -40,7 +40,7 @@ const CartDropdown = () => {
             {
                 totalAmount ?
                 (
-                    <NavLink to='checkout' className='w-100'>
+                    <NavLink to='checkout' className='w-100 mt-2'>
                         <Button text='Go to Checkout' buttonType='inverted'/>
                     </NavLink>
                 )
