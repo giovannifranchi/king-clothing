@@ -4,7 +4,7 @@ import './directory.style.scss'
 
 const Directory = ({categories})=> {
     return (
-        <div className="container pt-5 d-flex align-items-center home-container">
+        <div className="container pt-5 d-flex align-items-center justify-content-center home-container">
             <div className="row gy-3 align-items-center">
                 {
                     categories.map((category)=>{
