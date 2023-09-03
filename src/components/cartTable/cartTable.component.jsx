@@ -47,7 +47,7 @@ const CartTable = () => {
                             {itemsArray.map(({ info, itemAmount }) => (
                                 <tr key={info.id}>
                                     <td>
-                                        <img height={180} width={200} src={info.imageUrl} />
+                                        <img height={180} width={200} src={info.imageUrl} alt={info.name} />
                                     </td>
                                     <td className='align-middle'>{info.name}</td>
                                     <td className='align-middle'>
