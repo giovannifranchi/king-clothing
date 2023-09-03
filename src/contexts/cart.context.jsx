@@ -53,9 +53,15 @@ export const CartProvider = ({children})=> {
 
         setTotalAmount(totalAmount - 1);
     }
+
+    const removeAllItems = ({id})=>{
+        const newItems = {...cartItems}
+        delete newItems[id];
+        setCartItems(newItems);
+    }
     
 
-    const value = {isOpen, setIsOpen, cartItems, setCartItems, totalAmount, setTotalAmount, addItemstoCart, removeItemsFromCart};
+    const value = {isOpen, setIsOpen, cartItems, setCartItems, totalAmount, setTotalAmount, addItemstoCart, removeItemsFromCart, removeAllItems};
 
     return (
         <CartContext.Provider value={value}>

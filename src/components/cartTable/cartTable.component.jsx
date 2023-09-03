@@ -5,7 +5,7 @@ import { CartContext } from '../../contexts/cart.context';
 
 const CartTable = () => {
 
-    const { cartItems, addItemstoCart, removeItemsFromCart } = useContext(CartContext);
+    const { cartItems, addItemstoCart, removeItemsFromCart, removeAllItems } = useContext(CartContext);
 
     useEffect(() => {
         const itemsArray = Object.keys(cartItems).map((item) => cartItems[item]);//join reduce and mapping together
@@ -45,7 +45,7 @@ const CartTable = () => {
                             </td>
                             <td className='align-middle'>{info.price}</td>
                             <td className='align-middle'>
-                                <button><i class="fa-solid fa-xmark"></i></button>
+                                <button onClick={()=>{removeAllItems(info)}}><i class="fa-solid fa-xmark"></i></button>
                             </td>
                         </tr>
                     ))}
