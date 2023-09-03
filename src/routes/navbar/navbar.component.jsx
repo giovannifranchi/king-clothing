@@ -27,11 +27,11 @@ const NavBar = () => {
                                 SHOP
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink className='nav-link' to='contacts'>
                                 CONTACTS
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li>
                             {
                                 !currentUser ?
