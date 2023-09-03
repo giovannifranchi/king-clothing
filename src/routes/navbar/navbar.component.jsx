@@ -14,7 +14,7 @@ const NavBar = () => {
 
     return (
         <>
-            <div className="navbar py-3">
+            <div className="navbar py-3 ms-navbar">
                 <div className="container">
                     <div className='ms-logo'>
                         <Link className="navbar-brand" to='/'>

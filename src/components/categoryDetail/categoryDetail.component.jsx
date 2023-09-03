@@ -13,8 +13,8 @@ const CategoryDetail = ()=> {
     console.log(categories);
 
     return(
-        <div className='container'>
-            <h2 className='my-3 text-center'>{category.toUpperCase()}</h2>
+        <div className='container mt-5 py-5'>
+            <h2 className='mt-5 text-center'>{category.toUpperCase()}</h2>
             <div className='row gy-5 py-5'>
             {
                     categories[category].map((item)=>(
