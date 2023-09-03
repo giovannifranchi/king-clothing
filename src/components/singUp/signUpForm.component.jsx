@@ -24,7 +24,7 @@ const SignUpForm = () => {
         event.preventDefault();
         const { password, confirmPassword, email, displayName } = formField;
         if (password !== confirmPassword) return;
-        const response = await createAuthUserWithEmailAndPassword(email, password, displayName);
+        await createAuthUserWithEmailAndPassword(email, password, displayName);
         setFormField(defaultFormFields);
     }
 
