@@ -20,7 +20,7 @@ const CartTable = () => {
 
     useEffect(() => {
         getArrayAndTotalPrice();
-    }, [cartItems, getArrayAndTotalPrice]);
+    }, [cartItems]);
 
 
     const [itemsArray, setItemsArray] = useState([]);
