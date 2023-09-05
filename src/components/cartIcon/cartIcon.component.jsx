@@ -14,10 +14,6 @@ const CartIcon = () => {
 
     const { totalAmount } = useContext(CartContext);
 
-    // const toggleDropDown = ()=>{
-    //     setIsOpen(!isOpen);
-    // }
-
     const isOpen = useSelector(selectIsCartOpen);
 
     const dispatch = useDispatch();
