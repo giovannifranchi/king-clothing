@@ -1,16 +1,14 @@
 import './categoryDetail.style.scss';
-import { useContext } from 'react';
-import { CategoriesContext } from '../../contexts/categories.context';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../productCard/productCard.component';
+import { getCategories } from '../../store/categories/categories.selector';
+import { useSelector } from 'react-redux';
 
 
 const CategoryDetail = ()=> {
 
-    const { categories } = useContext(CategoriesContext);
+    const categories = useSelector(getCategories);
     const { category } = useParams();
-    console.log(category);
-    console.log(categories);
 
     return(
         <div className='container mt-5 py-5'>
