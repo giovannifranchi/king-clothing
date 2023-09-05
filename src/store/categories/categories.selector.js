@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const selectCategoryReducer = (state)=> state.categories;
+const selectCategoryReducer = (state)=> state.categories; //only this one fires when the root reducer changes properties that are not this one!
 
 export const selectCategories = createSelector(
   [selectCategoryReducer],
