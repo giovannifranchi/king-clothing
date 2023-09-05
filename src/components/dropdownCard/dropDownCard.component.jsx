@@ -1,26 +1,27 @@
 
 import './dropdownCard.style.scss';
-
-import { CartContext } from '../../contexts/cart.context';
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../store/cart/cart.action';
+import { removeItemFromCart } from '../../store/cart/cart.action';
 
 const DropdownCard = ({item})=> {
 
 
-    const { addItemstoCart, removeItemsFromCart } = useContext(CartContext);
+    const dispatch = useDispatch();
 
+    
     const {info, itemAmount } = item;
 
     const { name, imageUrl, price } = info;
 
     const addItems = (event)=>{
         event.stopPropagation();
-        addItemstoCart(info);
+        dispatch(addItemToCart(info));
     }
 
     const removeItems = (event)=>{
         event.stopPropagation();
-        removeItemsFromCart(info);
+        dispatch(removeItemFromCart(info));
     } 
 
 
