@@ -5,12 +5,16 @@ import Button from '../button/button.component';
 import { CartContext } from '../../contexts/cart.context';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
 
 
 const CartDropdown = () => {
 
-    const {isOpen, cartItems, totalAmount} = useContext(CartContext);
+    const { cartItems, totalAmount} = useContext(CartContext);
+
+    const isOpen = useSelector(selectIsCartOpen);
 
 
     const cartItemsArray = ()=>{
