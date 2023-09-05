@@ -15,7 +15,7 @@ const Shop = () => {
 
     useEffect(()=> {
         const fetchCategories = async ()=>{
-            const response = await getCategoriesAndDocuments();
+            const response = await getCategoriesAndDocuments('categories');
             dispatch(setCategories(response));
         };
 
