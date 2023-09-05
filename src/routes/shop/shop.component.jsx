@@ -14,12 +14,12 @@ const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        const fetchCategories = async ()=>{
+        const fetchCategoriesArray = async ()=>{
             const response = await getCategoriesAndDocuments('categories');
             dispatch(setCategories(response));
         };
 
-        fetchCategories();
+        fetchCategoriesArray();
     }, [dispatch])
     
     return (

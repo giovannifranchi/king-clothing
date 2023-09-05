@@ -1,13 +1,13 @@
 import './categoryDetail.style.scss';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../productCard/productCard.component';
-import { getCategories } from '../../store/categories/categories.selector';
+import { selectCategoriesMap } from '../../store/categories/categories.selector';
 import { useSelector } from 'react-redux';
 
 
 const CategoryDetail = ()=> {
 
-    const categories = useSelector(getCategories);
+    const categories = useSelector(selectCategoriesMap);
     const { category } = useParams();
     const categoriesToMap = categories[category] || [];
 

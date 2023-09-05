@@ -1,7 +1,7 @@
 import './categoriesSection.style.scss';
 import ProductCard from '../productCard/productCard.component';
 import { useSelector } from 'react-redux';
-import { getCategories } from '../../store/categories/categories.selector';
+import { selectCategoriesMap } from '../../store/categories/categories.selector';
 import { NavLink } from 'react-router-dom';
 
 
@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 const CategoriesSection = () => {
 
     // const { categories } = useContext(CategoriesContext);
-    const categories = useSelector(getCategories);
+    const categories = useSelector(selectCategoriesMap);
     
     return (
         <div className='container py-5 mt-5'>
