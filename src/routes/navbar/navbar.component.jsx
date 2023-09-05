@@ -1,14 +1,14 @@
 import Logo from '../../assets/crown.svg';
 import CartIcon from '../../components/cartIcon/cartIcon.component';
 import { Outlet, Link, NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/users.context';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
 import { signOutAuth } from '../../utils/firebase/firebase.utils';
 import './navbar.style.scss';
 
 const NavBar = () => {
 
-    const { currentUser } = useContext(UserContext);
+    const currentUser = useSelector(selectCurrentUser);
 
     const handleSignOut = ()=> signOutAuth();
 

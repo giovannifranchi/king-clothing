@@ -24,7 +24,7 @@ const App = ()=> {
       dispatch(setCurrentUser(user))
     })
     return unsubscribe;
-  }, [])
+  }, [dispatch]) //it is here just because of lint error
 
   return (
     <Routes>
