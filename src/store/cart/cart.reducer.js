@@ -44,6 +44,12 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         }
     }
 
+    const clearHelper = (item)=> {
+        const newItems = { ...state.cartItems };
+        delete newItems[item.id];
+        return newItems;
+    }
+
     switch (type) {
         case CART_ACTION_TYPES.TOGGLE_IS_OPEN:
             return { ...state, isOpen: payload };
@@ -52,7 +58,7 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         case CART_ACTION_TYPES.REMOVE_ITEM_FROM_CART:
             return { ...state, cartItems: removeItemHelper(payload), totalAmount: state.totalAmount - 1 };
         case CART_ACTION_TYPES.CLEAR_ITEMS:
-            return { ...state, cartItems: payload, totalAmount: state.totalAmount - state.cartItems[payload.id].itemAmount };
+            return { ...state, cartItems: clearHelper(payload), totalAmount: state.totalAmount - state.cartItems[payload.id].itemAmount };
         default:
             return state;
     }
