@@ -1,5 +1,7 @@
 
 import './App.scss';
+import { subscribeToAuthChange, createUserDocumentFromAuth } from './utils/firebase/firebase.utils';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/home/home.component';
 import NavBar from './routes/navbar/navbar.component';
