@@ -2,29 +2,22 @@ import './cartDropdown.style.scss';
 
 import DropdownCard from '../dropdownCard/dropDownCard.component';
 import Button from '../button/button.component';
-import { CartContext } from '../../contexts/cart.context';
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
+import { selectAllItemsToArray } from '../../store/cart/cart.selector';
+import { selectItemsTotalAmount } from '../../store/cart/cart.selector';
 
 
 
 const CartDropdown = () => {
 
-    const { cartItems, totalAmount} = useContext(CartContext);
-
     const isOpen = useSelector(selectIsCartOpen);
 
+    const cartItems = useSelector(selectAllItemsToArray);
 
-    const cartItemsArray = ()=>{
-        if(!Object.keys(cartItems).length) return [];
-        const list = [];
-        for(let item in cartItems) list.push(cartItems[item]);
-        return list;
-    }
+    const totalAmount = useSelector(selectItemsTotalAmount);
 
-    const cart = cartItemsArray();
 
     return (
         <div className={`${isOpen ? 'cart-dropdown-container' : 'd-none'}`}>
@@ -33,7 +26,7 @@ const CartDropdown = () => {
                 totalAmount ? 
                 (<div className='cart-items'>
                     {
-                        cart.map((item)=>{return <DropdownCard item={item} key={item.info.id}/>})
+                        cartItems.map((item)=>{return <DropdownCard item={item} key={item.info.id}/>})
                     }
                 </div>)
                 :
