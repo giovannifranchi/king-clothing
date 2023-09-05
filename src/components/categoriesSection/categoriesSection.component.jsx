@@ -1,11 +1,7 @@
 import './categoriesSection.style.scss';
 import ProductCard from '../productCard/productCard.component';
-import { setCategories } from '../../store/categories/categories.action';
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../store/categories/categories.selector';
-import { useEffect } from 'react';
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 
@@ -15,16 +11,7 @@ const CategoriesSection = () => {
 
     // const { categories } = useContext(CategoriesContext);
     const categories = useSelector(getCategories);
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-        const setNewCategories = (async ()=>{
-            const response = await getCategoriesAndDocuments()
-            dispatch(setCategories(response));
-        })
-        setNewCategories();
-    }, [dispatch]) //added for eslint
-
+    
     return (
         <div className='container py-5 mt-5'>
             {
