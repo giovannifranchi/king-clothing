@@ -2,10 +2,9 @@ import './shop.style.scss';
 import CategoriesSection from '../../components/categoriesSection/categoriesSection.component';
 import { Route, Routes } from 'react-router-dom';
 import CategoryDetail from '../../components/categoryDetail/categoryDetail.component';
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
-import { setCategories } from '../../store/categories/categories.action';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { fetchCategoriesAsync } from '../../store/categories/categories.action';
 
 
 
@@ -14,12 +13,7 @@ const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        const fetchCategoriesArray = async ()=>{
-            const response = await getCategoriesAndDocuments('categories');
-            dispatch(setCategories(response));
-        };
-
-        fetchCategoriesArray();
+        dispatch(fetchCategoriesAsync());
     }, [dispatch])
     
     return (
