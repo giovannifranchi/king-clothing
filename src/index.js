@@ -9,6 +9,7 @@ import 'bootstrap';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Elements } from '@stripe/react-stripe-js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,9 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
+          <Elements>
+            <App />
+          </Elements>
         </BrowserRouter>
       </PersistGate>
     </Provider>
