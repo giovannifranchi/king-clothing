@@ -13,7 +13,7 @@ export const fetchCategoriesAsync = ()=>{
     return async (dispatch)=> {
         dispatch(fetchCategoriesStart());
         try {
-
+            
             const categoriesArray = await getCategoriesAndDocuments();
             dispatch(fetchCategoriesSuccess(categoriesArray));
             
