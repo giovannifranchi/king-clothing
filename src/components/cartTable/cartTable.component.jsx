@@ -7,6 +7,7 @@ import { addItemToCart } from '../../store/cart/cart.action';
 import { removeItemFromCart } from '../../store/cart/cart.action';
 import { clearItems } from '../../store/cart/cart.action';
 
+
 const CartTable = () => {
 
     const dispatch = useDispatch();
