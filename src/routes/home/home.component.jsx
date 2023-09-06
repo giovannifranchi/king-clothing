@@ -33,7 +33,7 @@ const Home = ()=> {
           route: 'shop/mens'
         },
     ];
-
+    
     return (
         <Directory categories={categories}/>
     )
