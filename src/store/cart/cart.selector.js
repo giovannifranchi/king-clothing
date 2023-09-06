@@ -22,4 +22,13 @@ export const selectItemsTotalAmount = createSelector(
     (cartSlice)=>cartSlice.totalAmount
 );
 
+export const selectTotalPrice = createSelector(
+    [selectAllItemsToArray],
+    (cartArraySlice)=>{
+        return cartArraySlice.reduce((acc, item)=> {
+           return acc + item.info.price * item.itemAmount;
+        }, 0)
+    }
+);
+
 

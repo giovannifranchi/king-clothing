@@ -1,36 +1,25 @@
 import './cartTable.style.scss';
-
-import { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../../contexts/cart.context';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { selectAllItemsToArray } from '../../store/cart/cart.selector';
+import { selectTotalPrice } from '../../store/cart/cart.selector';
+import { addItemToCart } from '../../store/cart/cart.action';
+import { removeItemFromCart } from '../../store/cart/cart.action';
+import { clearItems } from '../../store/cart/cart.action';
 
 const CartTable = () => {
 
-    const { cartItems, addItemstoCart, removeItemsFromCart, removeAllItems } = useContext(CartContext);
+    const dispatch = useDispatch();
 
+    const cartItems = useSelector(selectAllItemsToArray);
 
-    useEffect(() => {
-        const getArrayAndTotalPrice = (() => {
-            const list = [];
-            let totalAmount = 0;
-            Object.keys(cartItems).forEach((item) => {
-                list.push(cartItems[item])
-                totalAmount = totalAmount + cartItems[item].itemAmount * cartItems[item].info.price;
-            })
-            setItemsArray(list);
-            setTotalPrice(totalAmount);
-        })
-        getArrayAndTotalPrice();
-    }, [cartItems]);
-
-
-    const [itemsArray, setItemsArray] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const totalPrice = useSelector(selectTotalPrice);
 
 
     return (
         <div className='mt-5 pt-5'>
             {
-                itemsArray.length > 0 && (
+                cartItems.length > 0 && (
                     <>
                     <h2>This is your cart</h2>
                     <table className='table'>
@@ -44,20 +33,20 @@ const CartTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {itemsArray.map(({ info, itemAmount }) => (
+                            {cartItems.map(({ info, itemAmount }) => (
                                 <tr key={info.id}>
                                     <td>
                                         <img height={180} width={200} src={info.imageUrl} alt={info.name} />
                                     </td>
                                     <td className='align-middle'>{info.name}</td>
                                     <td className='align-middle'>
-                                        <button className='cart-card-button' onClick={() => { removeItemsFromCart(info) }}> <i className="fa-solid fa-chevron-left"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { dispatch(removeItemFromCart(info)) }}> <i className="fa-solid fa-chevron-left"></i> </button>
                                         <span>{itemAmount}</span>
-                                        <button className='cart-card-button' onClick={() => { addItemstoCart(info) }}> <i className="fa-solid fa-chevron-right"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { dispatch(addItemToCart(info)) }}> <i className="fa-solid fa-chevron-right"></i> </button>
                                     </td>
                                     <td className='align-middle'>{info.price}</td>
                                     <td className='align-middle'>
-                                        <button onClick={() => { removeAllItems(info) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
+                                        <button onClick={() => { dispatch(clearItems(info)) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
                                     </td>
                                 </tr>
                             ))}
