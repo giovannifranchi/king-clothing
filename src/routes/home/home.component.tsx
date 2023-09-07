@@ -1,7 +1,14 @@
 import Directory from "../../components/directory/directory.component";
 
+export type category = {
+  id:number;
+  title:string;
+  imageUrl:string;
+  route:string;
+}
+
 const Home = ()=> {
-    const categories = [
+    const categories:category[] = [
         {
           id: 1,
           title: 'hats',
