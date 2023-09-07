@@ -1,6 +1,7 @@
 import './paymentForm.style.scss';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import Button from '../button/button.component';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTotalPrice } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
@@ -10,15 +11,19 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
+    
+
     const totalPrice = useSelector(selectTotalPrice);
-    const currentUser = useSelector(selectCurrentUser);
+    const {displayName, email} = useSelector(selectCurrentUser);
 
-    const {displayName, email} = currentUser;
+    const [isPyamentLoading, setIsPaymentLoading] = useState(false);
 
-
+    
     const paymentHandler = async (e) => {
         e.preventDefault();
         if (!stripe || !elements) return;
+
+        setIsPaymentLoading(true);
 
         const response = await fetch('/.netlify/functions/create-payment-intent', {
             method: 'post',
@@ -39,6 +44,8 @@ const PaymentForm = () => {
                 }
             }
         })
+
+        setIsPaymentLoading(false);
 
         if(paymentResult.error){
             alert(paymentResult.error);
