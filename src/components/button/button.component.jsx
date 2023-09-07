@@ -5,10 +5,19 @@ const BUTTON_TYPES_CLASSES = {
     inverted: 'inverted'
 }
 
-const Button = ({text, buttonType, ...otherProps})=> {
+const Button = ({text, buttonType, isLoading, ...otherProps})=> {
     return (
-        <button className={`button-container ${BUTTON_TYPES_CLASSES[buttonType]}`} {...otherProps}>
-            {text}
+        <button disabled={isLoading} className={`button-container ${BUTTON_TYPES_CLASSES[buttonType]}`} {...otherProps}>
+            {
+                !isLoading ? 
+                (text)
+                :
+                (
+                    <div className='button-spinner-overlay'>
+                        <div className='button-spinner-container'></div>
+                    </div>
+                )
+            }
         </button>
     )
 }

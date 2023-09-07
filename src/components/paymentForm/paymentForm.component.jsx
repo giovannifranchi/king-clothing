@@ -18,7 +18,7 @@ const PaymentForm = () => {
 
     const [isPyamentLoading, setIsPaymentLoading] = useState(false);
 
-    
+
     const paymentHandler = async (e) => {
         e.preventDefault();
         if (!stripe || !elements) return;
@@ -59,7 +59,7 @@ const PaymentForm = () => {
     return (
         <form onSubmit={paymentHandler}>
             <CardElement />
-            <Button buttonType='inverted' text='buy now' />
+            <Button isLoading={isPyamentLoading} buttonType='inverted' text='buy now' />
         </form>
     )
 }
