@@ -3,11 +3,15 @@ import './dropdownCard.style.scss';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../store/cart/cart.action';
 import { removeItemFromCart } from '../../store/cart/cart.action';
+import { selectCartReducer } from '../../store/cart/cart.selector';
+import { useSelector } from 'react-redux';
 
 const DropdownCard = ({item})=> {
 
 
     const dispatch = useDispatch();
+
+    const cart = useSelector(selectCartReducer);
 
     
     const {info, itemAmount } = item;
@@ -16,12 +20,12 @@ const DropdownCard = ({item})=> {
 
     const addItems = (event)=>{
         event.stopPropagation();
-        dispatch(addItemToCart(info));
+        dispatch(addItemToCart(info, cart));
     }
 
     const removeItems = (event)=>{
         event.stopPropagation();
-        dispatch(removeItemFromCart(info));
+        dispatch(removeItemFromCart(info, cart));
     } 
 
 

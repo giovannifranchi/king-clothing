@@ -11,7 +11,6 @@ const CategoryDetail = () => {
 
     const categories = useSelector(selectCategoriesMap);
     const isLoading = useSelector(selectIsLoading);
-    console.log(isLoading);
     const { category } = useParams();
     const categoriesToMap = categories[category] || [];
 

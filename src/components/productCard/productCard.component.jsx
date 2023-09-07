@@ -2,6 +2,8 @@ import './productCard.style.scss'
 import Button from '../button/button.component';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../store/cart/cart.action';
+import { useSelector } from 'react-redux';
+import { selectCartReducer } from '../../store/cart/cart.selector';
 
 const ProductCard = ({product})=> {
 
@@ -9,9 +11,11 @@ const ProductCard = ({product})=> {
 
     const dispatch = useDispatch();
 
+    const cart = useSelector(selectCartReducer);
+
 
     const addProduct = ()=> {
-        dispatch(addItemToCart(product));
+        dispatch(addItemToCart(product, cart));
     }
 
     return (

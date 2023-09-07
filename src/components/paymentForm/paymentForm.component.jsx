@@ -14,7 +14,7 @@ const PaymentForm = () => {
     
 
     const totalPrice = useSelector(selectTotalPrice);
-    const {displayName, email} = useSelector(selectCurrentUser);
+    const user = useSelector(selectCurrentUser);
 
     const [isPyamentLoading, setIsPaymentLoading] = useState(false);
 
@@ -39,8 +39,8 @@ const PaymentForm = () => {
             payment_method: {
                 card: elements.getElement(CardElement),
                 billing_details: {
-                    name: displayName,
-                    email: email
+                    name: user?.displayName,
+                    email: user?.email
                 }
             }
         })

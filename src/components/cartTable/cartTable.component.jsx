@@ -1,11 +1,11 @@
 import './cartTable.style.scss';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { selectAllItemsToArray } from '../../store/cart/cart.selector';
-import { selectTotalPrice } from '../../store/cart/cart.selector';
-import { addItemToCart } from '../../store/cart/cart.action';
-import { removeItemFromCart } from '../../store/cart/cart.action';
-import { clearItems } from '../../store/cart/cart.action';
+import { selectTotalPrice, selectCartReducer, selectAllItemsToArray, selectItemsTotalAmount } from '../../store/cart/cart.selector';
+import { removeItemFromCart, clearItems, addItemToCart, updateTotal } from '../../store/cart/cart.action';
+
+
+
 import PaymentForm from '../paymentForm/paymentForm.component'; 
 
 const CartTable = () => {
@@ -15,6 +15,10 @@ const CartTable = () => {
     const cartItems = useSelector(selectAllItemsToArray);
 
     const totalPrice = useSelector(selectTotalPrice);
+
+    const totalAmount = useSelector(selectItemsTotalAmount);
+
+    const cart  = useSelector(selectCartReducer);
 
 
     return (
@@ -41,13 +45,13 @@ const CartTable = () => {
                                     </td>
                                     <td className='align-middle'>{info.name}</td>
                                     <td className='align-middle'>
-                                        <button className='cart-card-button' onClick={() => { dispatch(removeItemFromCart(info)) }}> <i className="fa-solid fa-chevron-left"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { dispatch(removeItemFromCart(info, cart)) }}> <i className="fa-solid fa-chevron-left"></i> </button>
                                         <span>{itemAmount}</span>
-                                        <button className='cart-card-button' onClick={() => { dispatch(addItemToCart(info)) }}> <i className="fa-solid fa-chevron-right"></i> </button>
+                                        <button className='cart-card-button' onClick={() => { dispatch(addItemToCart(info, cart)) }}> <i className="fa-solid fa-chevron-right"></i> </button>
                                     </td>
                                     <td className='align-middle'>{info.price}</td>
                                     <td className='align-middle'>
-                                        <button onClick={() => { dispatch(clearItems(info)) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
+                                        <button onClick={() => { dispatch(clearItems(info, cart)); dispatch(updateTotal(info,totalAmount, cart )) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
                                     </td>
                                 </tr>
                             ))}

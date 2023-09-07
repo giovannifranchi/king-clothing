@@ -1,5 +1,4 @@
 import { CART_ACTION_TYPES } from "./cart.types";
-import { addItemHelper, removeItemHelper, clearHelper } from "../../utils/reducer/reducer.utils";
 
 const INITIAL_STATE = {
     isOpen: false,
@@ -15,11 +14,13 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         case CART_ACTION_TYPES.TOGGLE_IS_OPEN:
             return { ...state, isOpen: payload };
         case CART_ACTION_TYPES.ADD_ITEM_TO_CART:
-            return { ...state, cartItems: addItemHelper(payload, state), totalAmount: state.totalAmount + 1 };
+            return { ...state, cartItems: payload, totalAmount: state.totalAmount + 1 };
         case CART_ACTION_TYPES.REMOVE_ITEM_FROM_CART:
-            return { ...state, cartItems: removeItemHelper(payload, state), totalAmount: state.totalAmount - 1 };
+            return { ...state, cartItems: payload, totalAmount: state.totalAmount - 1 };
         case CART_ACTION_TYPES.CLEAR_ITEMS:
-            return { ...state, cartItems: clearHelper(payload, state), totalAmount: state.totalAmount - state.cartItems[payload.id].itemAmount };
+            return { ...state, cartItems: payload};
+        case CART_ACTION_TYPES.UPDATE_TOTAL_AMOUNT:
+            return {...state, totalAmount:payload};
         default:
             return state;
     }
