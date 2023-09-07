@@ -1,8 +1,9 @@
 import { CATEGORIES_ACTION_TYPES, Category } from "./categories.type";
-import { CategoryAction, CategoryData } from "./categories.action";
+import { CategoryAction } from "./categories.action";
+
 
 export type CategoriesState = {
-    readonly categories: CategoryData[];
+    readonly categories: Category[];
     readonly isLoading: boolean;
     readonly error: Error | null;
 }
