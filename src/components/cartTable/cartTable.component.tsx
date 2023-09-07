@@ -14,7 +14,7 @@ const CartTable = () => {
 
     const cartItems = useSelector(selectAllItemsToArray);
 
-    const totalPrice = useSelector(selectTotalPrice);
+    const totalPrice:number = useSelector(selectTotalPrice);
 
 
     return (

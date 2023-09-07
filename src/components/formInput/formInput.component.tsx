@@ -1,6 +1,11 @@
 import './formInput.style.scss'
 
-const FormInput = ({label, ...otherProps }) => {
+type FormInputPropTypes = {
+  label?:string;
+  [key:string]:any
+}
+
+const FormInput = ({label, ...otherProps }:FormInputPropTypes) => {
     return (
         <div className='group'>
         <input className='form-input' {...otherProps} />

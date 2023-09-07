@@ -7,13 +7,15 @@ import { selectIsLoading } from '../../store/categories/categories.selector';
 import Spinner from '../spinner/spinner.component';
 
 
+
 const CategoryDetail = () => {
+
 
     const categories = useSelector(selectCategoriesMap);
     const isLoading = useSelector(selectIsLoading);
-    console.log(isLoading);
     const { category } = useParams();
-    const categoriesToMap = categories[category] || [];
+    const categoriesToMap = category ? categories[category] : [];
+    const categoryName = category ? category : '';
 
     return (
         <div className='container mt-5 py-5'>
@@ -23,7 +25,7 @@ const CategoryDetail = () => {
                     :
                     (
                         <>
-                            <h2 className='mt-5 text-center'>{category.toUpperCase()}</h2>
+                            <h2 className='mt-5 text-center'>{categoryName.toUpperCase()}</h2>
                             <div className='row gy-5 py-5'>
                                 {
                                     categoriesToMap.map((item) => (

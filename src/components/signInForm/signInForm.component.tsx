@@ -5,12 +5,12 @@ import { ChangeEvent, FormEvent } from "react";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 
-type FormFieldType = {
+export interface IFormField {
     email:string;
     password:string;
 }
 
-const defaultFormField:FormFieldType = {
+const defaultFormField:IFormField = {
     email: '',
     password:''
 }
