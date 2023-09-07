@@ -6,7 +6,8 @@ import { withMatcher } from "../../utils/reducer/reducer.utils";
 import { ActionWithPayload } from "../../utils/reducer/reducer.utils";
 
 
-export const addItemHelper = (item: ItemInfo, state: CartState): ItemsMap => {
+
+const addItemHelper = (item: ItemInfo, state: CartState): ItemsMap => {
     if (!(item.id in state.cartItems)) {
         return {
             ...state.cartItems, [item.id]: {
@@ -24,7 +25,8 @@ export const addItemHelper = (item: ItemInfo, state: CartState): ItemsMap => {
     }
 }
 
-export const removeItemHelper = (item: ItemInfo, state: CartState): ItemsMap => {
+
+const removeItemHelper = (item: ItemInfo, state: CartState): ItemsMap => {
     if (state.cartItems[item.id].itemAmount === 1) {
         const newItems = { ...state.cartItems };
         delete newItems[item.id];
@@ -40,7 +42,7 @@ export const removeItemHelper = (item: ItemInfo, state: CartState): ItemsMap => 
     }
 }
 
-export const clearHelper = (item: ItemInfo, state: CartState): ItemsMap => {
+const clearHelper = (item: ItemInfo, state: CartState): ItemsMap => {
     const newItems = { ...state.cartItems };
     delete newItems[item.id];
     return newItems;
