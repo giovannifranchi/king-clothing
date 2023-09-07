@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { signInWithGooglePopup, createUserDocumentFromAuth,  } from '../../utils/firebase/firebase.utils';
 import { signInWithCredentials } from "../../utils/firebase/firebase.utils";
+import { ChangeEvent, FormEvent } from "react";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 
+type FormFieldType = {
+    email:string;
+    password:string;
+}
 
-const defaultFormField = {
+const defaultFormField:FormFieldType = {
     email: '',
     password:''
 }
@@ -15,7 +20,7 @@ const SignInForm = ()=> {
 
     const {email, password} = formField;
 
-    const handleChange = (event)=>{
+    const handleChange = (event:ChangeEvent<HTMLInputElement>):void=>{
         const {value, name} = event.target;
         setFormField({...formField, [name]:value});
     }
@@ -25,7 +30,7 @@ const SignInForm = ()=> {
         await createUserDocumentFromAuth(user);
     }
 
-    const handleSubmit = async (event)=>{
+    const handleSubmit = async (event:FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         if(!email.trim() || !password) return alert('you need to insert your credentials');
         try {
