@@ -20,6 +20,11 @@ const CartTable = () => {
 
     const cart  = useSelector(selectCartReducer);
 
+    const clearAll = (info, cart, totalAmount)=> {
+        dispatch(clearItems(info, cart));
+        dispatch(updateTotal(info, totalAmount, cart))
+    }
+
 
     return (
         <div className='mt-5 py-5'>
@@ -51,7 +56,7 @@ const CartTable = () => {
                                     </td>
                                     <td className='align-middle'>{info.price}</td>
                                     <td className='align-middle'>
-                                        <button onClick={() => { dispatch(clearItems(info, cart)); dispatch(updateTotal(info,totalAmount, cart )) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
+                                        <button onClick={() => { clearAll(info, cart, totalAmount) }} className='cart-card-button'><i className="fa-solid fa-xmark"></i></button>
                                     </td>
                                 </tr>
                             ))}
