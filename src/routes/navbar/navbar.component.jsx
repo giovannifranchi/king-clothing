@@ -1,4 +1,4 @@
-import Logo from '../../assets/crown.svg';
+import  Logo from '../../assets/crown.svg';
 import CartIcon from '../../components/cartIcon/cartIcon.component';
 import { Outlet, Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
