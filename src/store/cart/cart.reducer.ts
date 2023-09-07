@@ -1,4 +1,10 @@
-import { CART_ACTION_TYPES } from "./cart.types";
+import { CART_ACTION_TYPES, ItemsMap } from "./cart.types";
+
+export type CartState = {
+    readonly isOpen: boolean;
+    readonly cartItems: ItemsMap;
+    readonly totalAmount: number;
+}
 
 const INITIAL_STATE = {
     isOpen: false,
