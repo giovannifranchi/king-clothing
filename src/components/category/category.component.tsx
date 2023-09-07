@@ -1,10 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import './category.style.scss';
+import { category } from '../../routes/home/home.component';
 
-const Category = ({category})=> {
+type CategoryPropTypes = {
+    category:category;
+}
+
+const Category = ({category}:CategoryPropTypes)=> {
     const {id, title, imageUrl, route} = category
-    const basicClasses = "col-sm-6"
-    const additionalClasses = id < 4 ? "col-md-4" : "col-md-6";
+    const basicClasses:string = "col-sm-6"
+    const additionalClasses:string = id < 4 ? "col-md-4" : "col-md-6";
     const navigate = useNavigate();
     const  onNavigateHandler = ()=>navigate(route);
 
