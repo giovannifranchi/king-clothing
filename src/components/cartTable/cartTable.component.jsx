@@ -6,7 +6,7 @@ import { selectTotalPrice } from '../../store/cart/cart.selector';
 import { addItemToCart } from '../../store/cart/cart.action';
 import { removeItemFromCart } from '../../store/cart/cart.action';
 import { clearItems } from '../../store/cart/cart.action';
-
+import PaymentForm from '../paymentForm/paymentForm.component'; 
 
 const CartTable = () => {
 
@@ -57,6 +57,7 @@ const CartTable = () => {
                 )
             }
             {totalPrice ? <h2 className='text-end'>Price: {totalPrice}$</h2> : <h2 className='text-center mt-5'>No Items in the cart</h2>}
+            { totalPrice ? <PaymentForm/> : <></> }
         </div>
     )
 }

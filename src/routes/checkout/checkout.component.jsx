@@ -1,7 +1,6 @@
 import './checkout.style.scss'
 
 import CartTable from '../../components/cartTable/cartTable.component';
-import PaymentForm from '../../components/paymentForm/paymentForm.component';
 
 const Checkout = ()=>{
     return (
@@ -9,7 +8,6 @@ const Checkout = ()=>{
             <div className='row justify-content-center'>
                 <div className='col-8'>
                     <CartTable/>
-                    <PaymentForm/>
                 </div>
             </div>
         </div>
