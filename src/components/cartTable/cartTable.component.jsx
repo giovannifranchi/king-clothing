@@ -18,7 +18,7 @@ const CartTable = () => {
 
 
     return (
-        <div className='mt-5 pt-5'>
+        <div className='mt-5 py-5'>
             {
                 cartItems.length > 0 && (
                     <>
