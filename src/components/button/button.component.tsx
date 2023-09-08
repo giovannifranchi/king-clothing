@@ -1,5 +1,6 @@
 import './button.style.component.scss'
-import { FC } from 'react';
+import { FC, ButtonHTMLAttributes } from 'react';
+
 
 export enum BUTTON_TYPES_CLASSES  {
     base = 'base',
@@ -9,20 +10,20 @@ export enum BUTTON_TYPES_CLASSES  {
 
 export type ButtonProps = {
     text: string;
-    buttonType: keyof typeof BUTTON_TYPES_CLASSES;
+    buttonType?: keyof typeof BUTTON_TYPES_CLASSES;
     isLoading?: boolean;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button: FC<ButtonProps> = ({text, buttonType, isLoading, ...otherProps})=> {
+const Button: FC<ButtonProps> = ({text, buttonType = 'base', isLoading, ...otherProps})=> {
 
 
-    const getButtonClass = (buttonType = BUTTON_TYPES_CLASSES.base): typeof BUTTON_TYPES_CLASSES=> {
+    const getButtonClass = (buttonType: keyof typeof BUTTON_TYPES_CLASSES): string => {
         return BUTTON_TYPES_CLASSES[buttonType];
     }
 
 
     return (
-        <button disabled={isLoading} className={`button-container ${getButtonClass}`} {...otherProps}>
+        <button disabled={isLoading} className={`button-container ${getButtonClass(buttonType)}`} {...otherProps}>
             {
                 !isLoading ? 
                 (text)
