@@ -2,8 +2,20 @@ import { useState } from "react";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
+import { ChangeEvent, FormEvent } from "react";
 
-const defaultFormFields = {
+
+export interface IFormFieldBase {
+    email: string;
+    password: string;
+}
+
+export interface IFormFieldSingUp extends IFormFieldBase {
+    displayName: string;
+    confirmPassword: string;
+}
+
+const defaultFormFields: IFormFieldSingUp = {
     displayName: '',
     email: '',
     password: '',
@@ -15,12 +27,12 @@ const SignUpForm = () => {
     const [formField, setFormField] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formField;
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormField({ ...formField, [name]: value });
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const { password, confirmPassword, email, displayName } = formField;
         if (password !== confirmPassword) return;

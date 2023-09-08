@@ -4,8 +4,14 @@ import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../store/cart/cart.action';
 import { useSelector } from 'react-redux';
 import { selectCartReducer } from '../../store/cart/cart.selector';
+import { FC } from 'react';
+import { ItemInfo } from '../../store/cart/cart.types';
 
-const ProductCard = ({product})=> {
+type ProductCardProps = {
+    product: ItemInfo;
+}
+
+const ProductCard: FC<ProductCardProps> = ({product})=> {
 
     const {  name, imageUrl, price } = product;
 

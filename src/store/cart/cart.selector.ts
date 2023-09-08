@@ -1,17 +1,20 @@
 import { createSelector } from "reselect";
+import { CartState } from "./cart.reducer";
+import { Item } from "./cart.types";
+import { RootState } from "../store";
 
 
-export const selectCartReducer = (state) => state.cart;
+export const selectCartReducer = (state: RootState): CartState => state.cart;
 
 export const selectIsCartOpen = createSelector(
     [selectCartReducer],
-    (cartSlice) => cartSlice.isOpen
+    (cartSlice): boolean => cartSlice.isOpen
 );
 
 export const selectAllItemsToArray = createSelector(
     [selectCartReducer],
-    (cartSlice) => {
-        const items = [];
+    (cartSlice): Item[] => {
+        const items: Array<Item> = [];
         Object.keys(cartSlice.cartItems).forEach((item) => items.push(cartSlice.cartItems[item]));
         return items;
     }
@@ -19,13 +22,13 @@ export const selectAllItemsToArray = createSelector(
 
 export const selectItemsTotalAmount = createSelector(
     [selectCartReducer],
-    (cartSlice)=>cartSlice.totalAmount
+    (cartSlice): number =>cartSlice.totalAmount
 );
 
 export const selectTotalPrice = createSelector(
     [selectAllItemsToArray],
-    (cartArraySlice)=>{
-        return cartArraySlice.reduce((acc, item)=> {
+    (cartArraySlice): number =>{
+        return cartArraySlice.reduce((acc: number, item: Item)=> {
            return acc + item.info.price * item.itemAmount;
         }, 0)
     }

@@ -1,7 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import './category.style.scss';
+import { FC } from 'react';
+import { CategoryDirectoryItem } from '../../routes/home/home.component';
 
-const Category = ({category})=> {
+type CategoryProps = {
+    category: CategoryDirectoryItem
+}
+
+
+const Category: FC<CategoryProps> = ({category})=> {
     const {id, title, imageUrl, route} = category
     const basicClasses = "col-sm-6"
     const additionalClasses = id < 4 ? "col-md-4" : "col-md-6";
