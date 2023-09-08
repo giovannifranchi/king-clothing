@@ -5,6 +5,7 @@ import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import { IFormFieldBase } from "../singUp/signUpForm.component";
 import { ChangeEvent, FormEvent } from "react";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 
 const defaultFormField: IFormFieldBase = {
@@ -33,7 +34,11 @@ const SignInForm = ()=> {
         try {
             await signInWithCredentials(email, password);
         } catch (error) {
-            console.log(error);
+            if((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS){
+                alert('this email already exist');
+            }else {
+                console.log(error);
+            }
         }
     }
     
