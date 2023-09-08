@@ -4,7 +4,9 @@ import { CategoriesState } from "./categories.reducer";
 
 import { CategoriesMap } from "./categories.type";
 
-const selectCategoryReducer = (state): CategoriesState=> state.categories; //only this one fires when the root reducer changes properties that are not this one!
+import { RootState } from "../store";
+
+const selectCategoryReducer = (state: RootState): CategoriesState=> state.categories; //only this one fires when the root reducer changes properties that are not this one!
 
 export const selectCategories = createSelector(
   [selectCategoryReducer],
