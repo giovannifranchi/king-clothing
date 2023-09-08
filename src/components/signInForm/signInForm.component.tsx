@@ -3,9 +3,11 @@ import { signInWithGooglePopup, createUserDocumentFromAuth,  } from '../../utils
 import { signInWithCredentials } from "../../utils/firebase/firebase.utils";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
+import { IFormFieldBase } from "../singUp/signUpForm.component";
+import { ChangeEvent, FormEvent } from "react";
 
 
-const defaultFormField = {
+const defaultFormField: IFormFieldBase = {
     email: '',
     password:''
 }
@@ -15,7 +17,7 @@ const SignInForm = ()=> {
 
     const {email, password} = formField;
 
-    const handleChange = (event)=>{
+    const handleChange = (event: ChangeEvent<HTMLInputElement>)=>{
         const {value, name} = event.target;
         setFormField({...formField, [name]:value});
     }
@@ -25,7 +27,7 @@ const SignInForm = ()=> {
         await createUserDocumentFromAuth(user);
     }
 
-    const handleSubmit = async (event)=>{
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         if(!email.trim() || !password) return alert('you need to insert your credentials');
         try {
@@ -45,7 +47,7 @@ const SignInForm = ()=> {
                 <FormInput label='password' name="password" id="password2" type="password" value={password} onChange={handleChange} />
                 <div className="d-flex justify-content-between">
                     <Button type="submit" text="SIGN IN" />
-                    <Button type="button" text="SIGN IN WITH GOOGLE" buttonType="google" onClick={logGoogleUser}/>
+                    <Button type="button" text="SIGN IN WITH GOOGLE" buttonType='google' onClick={logGoogleUser}/>
                 </div>
             </form>
         </div>
