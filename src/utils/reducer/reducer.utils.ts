@@ -1,5 +1,6 @@
 import { AnyAction } from "redux";
 
+//This creates a method for function in order to determine if the create action type matches the action type passed through the reducer
 
 type Matchable<AC extends () => AnyAction> = AC & {
     type: ReturnType<AC>['type'];
