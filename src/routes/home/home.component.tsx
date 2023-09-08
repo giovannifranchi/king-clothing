@@ -1,7 +1,16 @@
 import Directory from "../../components/directory/directory.component";
 
+export type CategoryDirectoryItem = {
+  id: number;
+  title: string;
+  imageUrl: string;
+  route: string;
+}
+
+
+
 const Home = ()=> {
-    const categories = [
+    const categories: CategoryDirectoryItem[] = [
         {
           id: 1,
           title: 'hats',

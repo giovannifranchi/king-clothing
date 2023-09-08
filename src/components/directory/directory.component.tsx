@@ -1,8 +1,14 @@
+import { CategoryDirectoryItem } from "../../routes/home/home.component";
 import Category from "../category/category.component";
 import './directory.style.scss'
+import { FC } from "react";
+
+type DirectoryProps = {
+    categories: CategoryDirectoryItem[]
+}
 
 
-const Directory = ({categories})=> {
+const Directory: FC<DirectoryProps> = ({categories})=> {
     return (
         <div className="container pt-5 d-flex align-items-center justify-content-center home-container">
             <div className="row gy-3 align-items-center">

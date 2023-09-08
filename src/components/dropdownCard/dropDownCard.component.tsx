@@ -5,8 +5,15 @@ import { addItemToCart } from '../../store/cart/cart.action';
 import { removeItemFromCart } from '../../store/cart/cart.action';
 import { selectCartReducer } from '../../store/cart/cart.selector';
 import { useSelector } from 'react-redux';
+import { MouseEvent } from 'react';
+import { Item } from '../../store/cart/cart.types';
+import { FC } from 'react';
 
-const DropdownCard = ({item})=> {
+type DropdownProps = {
+    item: Item;
+}
+
+const DropdownCard: FC<DropdownProps> = ({item})=> {
 
 
     const dispatch = useDispatch();
@@ -18,12 +25,12 @@ const DropdownCard = ({item})=> {
 
     const { name, imageUrl, price } = info;
 
-    const addItems = (event)=>{
+    const addItems = (event: MouseEvent<HTMLButtonElement>)=>{
         event.stopPropagation();
         dispatch(addItemToCart(info, cart));
     }
 
-    const removeItems = (event)=>{
+    const removeItems = (event: MouseEvent<HTMLButtonElement>)=>{
         event.stopPropagation();
         dispatch(removeItemFromCart(info, cart));
     } 

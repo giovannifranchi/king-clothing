@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { selectTotalPrice, selectCartReducer, selectAllItemsToArray, selectItemsTotalAmount } from '../../store/cart/cart.selector';
 import { removeItemFromCart, clearItems, addItemToCart, updateTotal } from '../../store/cart/cart.action';
-
-
-
 import PaymentForm from '../paymentForm/paymentForm.component'; 
+import { ItemInfo } from '../../store/cart/cart.types';
+import { CartState } from '../../store/cart/cart.reducer';
 
 const CartTable = () => {
 
@@ -20,7 +19,7 @@ const CartTable = () => {
 
     const cart  = useSelector(selectCartReducer);
 
-    const clearAll = (info, cart, totalAmount)=> {
+    const clearAll = (info: ItemInfo, cart: CartState, totalAmount: number)=> {
         dispatch(clearItems(info, cart));
         dispatch(updateTotal(info, totalAmount, cart))
     }
