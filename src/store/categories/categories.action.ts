@@ -33,7 +33,7 @@ export const fetchCategoriesAsync = ()=>{
             dispatch(fetchCategoriesSuccess(categoriesArray));
             
         } catch (error) {
-            dispatch(fetchCategoriesFailure(error));
+            dispatch(fetchCategoriesFailure(error as Error));
         }
     }
 }
