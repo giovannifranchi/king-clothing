@@ -6,12 +6,16 @@ import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../store/categories/categories.selector';
 import Spinner from '../spinner/spinner.component';
 
+type CategoryRouteParams = {
+    category: string;
+}
+
 
 const CategoryDetail = () => {
 
     const categories = useSelector(selectCategoriesMap);
     const isLoading = useSelector(selectIsLoading);
-    const { category } = useParams();
+    const { category } = useParams<keyof CategoryRouteParams> () as CategoryRouteParams;
     const categoriesToMap = categories[category] || [];
 
     return (
